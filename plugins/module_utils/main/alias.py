@@ -24,7 +24,7 @@ class Alias(BaseModule):
     API_MOD = 'firewall'
     API_CONT = 'alias'
     API_CMD_REL = 'reconfigure'
-    FIELDS_CHANGE = ['content', 'description']
+    FIELDS_CHANGE = ['content', 'description','updatefreq_days']
     FIELDS_ALL = ['name', 'type', 'enabled']
     FIELDS_ALL.extend(FIELDS_CHANGE)
     FIELDS_TRANSLATE = {
@@ -33,6 +33,7 @@ class Alias(BaseModule):
     FIELDS_TYPING = {
         'bool': ['enabled'],
         'select': ['type'],
+        'float': ['updatefreq_days'],
     }
     EXIST_ATTR = 'alias'
     JOIN_CHAR = '\n'

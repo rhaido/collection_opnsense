@@ -354,6 +354,16 @@ def format_int(data: (int, str)) -> (int, str):
     return data
 
 
+def format_float(data: (float, str)) -> (float, str):
+    if isinstance(data, float):
+        return data
+
+    if data.isnumeric():
+        return float(data)
+
+    return data
+
+
 def sort_param_lists(params: dict) -> None:
     for k in params:
         if isinstance(params[k], list):
@@ -402,6 +412,9 @@ def simplify_translate(
 
             elif t == 'int':
                 simple[f] = format_int(simple[f])
+
+            elif t == 'float':
+                simple[f] = format_float(simple[f])
 
             elif t == 'list':
                 simple[f] = get_selected_list(data=simple[f], remove_empty=True)
